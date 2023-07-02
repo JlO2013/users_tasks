@@ -1,0 +1,29 @@
+
+<div [style.width]="showTasks? '800px' : '400px' " style="border-style: solid; border-radius: 40px ; border-color: gray;">
+    <br/>
+    <div style="margin-left: 25px;">
+        <span style="font-size: larger; font-weight: bolder;position: relative;" [style.left]="showTasks? '250px' : '0px' ">Date: {{now | date : 'dd/MM/yyyy'}} Time{{now | date : ' H:mm:ss'}}<br/></span>
+    <div style="margin-top: 10px;" [style.display]="showTasks? 'none' : 'block' ">
+        Search: <input #txt type="text" (keyup)="search(txt.value)" >  <input type="button" value="Add" (click)="newUser()" style="float: right; margin-right: 65px;font-size:medium;">
+    </div>
+</div>
+    <br/>
+    <button style="position: relative; left: 100px; margin-bottom: 5px;" [style.display]="showTasks? 'none' : 'block' " (click)="todaySTasks()">Show Daily Tasks</button>
+    <button style="position: relative; left: 340px; margin-bottom: 5px;" (click)="backToUsers()" [style.display]="showTasks? 'block' : 'none' ">Back to Dashboard</button>
+    <div *ngIf="showTasks" style="display: flex; position: relative;">
+        <app-daily-tasks [userid]="user._id" *ngFor="let user of filteredUsers"></app-daily-tasks>
+    </div>
+    <div *ngIf="hideTasks">
+    <app-user [userid]="user._id" *ngFor="let user of filteredUsers"></app-user>  
+</div>
+</div>
+<div class="tasks" style="margin-bottom: 10px; width: 300px;"  [style.display]="getNewUser? 'block' : 'none' ">
+    Add new user
+    <div style="border-style: solid; border-color: gray; width: 300px; height: 150px; margin-top: 5px;">
+        <div style="margin-top: 25px; ">
+            ID: <input type="number" #userID><br/>
+            <div style="margin-top: 5px;">Name: <input type="text" #userName><br/></div>
+            <div style="margin-top: 5px;">Email: <input type="text" #userEmail><br/><br/></div>
+            <input type="button" value="Cancel" (click)="newUser()" class="button"> <input type="button" value="Add" (click)="addUser(userID.value, userName.value, userEmail.value)" class="button">
+        </div>
+    </div>    </div>

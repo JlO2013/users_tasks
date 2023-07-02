@@ -1,0 +1,13 @@
+<div class="parent main">
+<div class="userData">
+    <div>User : {{user.name}}<br/></div>
+    <div style="margin-left: 7px; margin-bottom: 5px; height: 300px; overflow-x: hidden;">
+        <ul *ngFor="let task of doneTasks">
+            <li>{{task.title}}<br/>
+                {{task.completed}} <input type="button" style="margin: 5px; float: right;" value="Mark Completed"  (click)="complete(task._id, task.title)" ><br/>
+                {{task.deadline | date : 'dd/MM/yyyy'}}
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

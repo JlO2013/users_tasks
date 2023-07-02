@@ -1,0 +1,9 @@
+.tasks {
+    position: absolute;
+    left: 400px;
+    top: 65px;
+    grid-area: aside;
+    grid-column-start: 1;
+    margin-left: 50px;
+    order: 1;
+  }

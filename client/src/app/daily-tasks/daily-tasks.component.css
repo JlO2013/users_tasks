@@ -1,0 +1,25 @@
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  grid-template-areas: 
+  "main aside"
+  "foot aside";
+}
+.main {
+  grid-area: main;
+  }
+.userData {
+  position: relative;
+  
+    top: 20px;
+    margin-left: 50px;
+    order: 2;
+    border-style: solid; 
+    border-width: 2px;
+    width: 350px; 
+    margin-left: 20px; 
+    margin-bottom: 20px; 
+    border-color: red;
+  }
+

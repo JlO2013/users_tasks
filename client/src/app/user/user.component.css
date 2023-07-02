@@ -1,0 +1,85 @@
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    grid-template-areas: 
+    "main aside"
+    "foot aside";
+  }
+  .main {
+    grid-area: main;
+    }
+    .details {
+      position: absolute;
+      left: 400px;
+      top: 70px;
+      grid-area: aside;
+      grid-column-start: 2;
+      margin-left: 50px;
+      order: 2;
+    }
+    .tasks {
+      position: relative;
+      grid-column-start: 2;
+      order: 2;
+      bottom: 10px;
+      width: 310px;
+      height: 150px;
+    }
+
+    .posts {
+      
+      top: 10px;
+      width: 310px;
+      grid-column-start: 2;
+      order: 2;
+    }
+    .regBut {
+      position: relative;
+      float: right; 
+      margin-right: 5px; 
+      margin-bottom: 5px; 
+    }
+    .button {
+      float: right; 
+      margin-right: 5px; 
+      margin-bottom: 20px; 
+      background-color: rgb(231, 184, 97);
+    }
+    .moreData {
+      border-style: solid;  
+      border-radius: 20px; 
+      margin-right: 5px; 
+      margin-top: 10px; 
+      margin-bottom: 10px; 
+      background-color: rgb(245, 241, 241); 
+      border: 1;
+    }
+    .userData {
+      border-style: solid; 
+      width: 350px; 
+      margin-left: 20px; 
+      margin-bottom: 20px; 
+    }
+    .allPosts {
+      border-style: solid; 
+      float: right; 
+      width: 300px;
+      border-color: gray;
+    }
+    .allTasks {
+      border-style: solid; 
+      float: right; 
+      width: 300px;
+      height: 250px;
+      border-color: gray;
+      overflow-x: hidden;
+
+    }
+    .taslOrPost {
+      border-style: solid; 
+      margin: 10px; 
+      border: 1; 
+      border-color: purple; 
+      overflow: auto;
+    }

@@ -1,0 +1,56 @@
+<div class="parent main">
+    <div (mouseout)="expand==false" class="userData" [style.border-color]="taskDone? 'red' : 'green' " [style.background-color]="expand? 'rgb(247, 186, 73)' : 'white' ">
+        <br/>
+        <div style="margin-left: 7px; margin-bottom: 5px;"  ><label  (click)="sendData(user._id)">ID : {{user.id}}</label> <br/>
+            Name : <input type="text" #name value="{{user.name}}" name="name" [style.background-color]="expand? 'rgb(247, 186, 73)' : 'white' "> <br/>   
+            Email : <input type="text" #email value="{{user.email}}" name="email" style="margin-top: 5px;"  [style.background-color]="expand? 'rgb(247, 186, 73)' : 'white' ">  <br/><br/>    
+            <input type="button" (mouseover)="count=true" (click)="count=false" value="Other Data" > <br/>
+                <div [style.display]="count? 'block' : 'none' " class="moreData">
+                <br/>
+                <div style="margin-left: 8px; margin-bottom: 5px;" > 
+                    Street: <input type="text" #street value="{{user.street}}" > <br/> 
+                    City: <input type="text" #city value="{{user.city}}"> <br/>
+                    Zipcode: <input type="text" #zipCode value="{{user.zipCode}}">
+                </div>
+            </div>
+            <input  type="button" value="Delete" (click)="deleteUser(user)" class="button">
+            <input  type="button" value="Update" (click)="update(name.value, email.value, street.value, city.value, zipCode.value)" class="button">  
+        </div>
+    </div>
+    
+    <div class="details" [style.display]="isVisible? 'block' : 'none' " (mouseout)="isVisible==false">
+        <div class="tasks">
+            Tasks - User {{user.id}} <input type="button" value="add" (click)="getNewTask()" style="float: right; margin-bottom: 5px;">
+            <div class="allTasks" [style.display]="showTasks? 'block' : 'none' " >
+                <div class="taslOrPost"  *ngFor="let task of tasks;">
+                    Task: {{task.title}}<br/>
+                    Deadline: {{task.deadline | date : 'dd/MM/yyyy'}}<br/>
+                    Completed: {{task.completed}} <input type="button" style="margin: 5px; float: right;" [style.display]="task.completed? 'none' : 'block' " value="Mark Completed"  (click)="complete(task._id, task.title)" >
+                </div>
+            </div>
+            <div style="border-style: solid; border-color: gray; width: 300px; height: 100px; margin-top: 5px;" [style.display]="showTasks? 'none' : 'block' ">
+                <div style="margin-top: 25px; ">
+                    Title: <input type="text" #taskTitle><br/><br/>
+                    Deadline <input type="date" #taskDeadline><br/><br/>
+                    <input type="button" value="Cancel" (click)="getNewTask()" class="regBut"> <input type="button" value="Add" (click)="addTask(taskTitle.value, taskDeadline.value)" class="regBut">
+                </div>
+            </div>
+        </div>
+        <div class="posts">
+            Posts - User {{user.id}} <input type="button" value="add" (click)="getNewPost()" style="float: right; margin-bottom: 5px;">
+            <div class="allPosts" [style.display]="showPosts? 'block' : 'none' ">
+                <div class="taslOrPost"*ngFor="let post of posts">
+                    Title: {{post.title}}<br/>
+                    <div style="margin-top: 5px;">Text: {{post.body}}</div>
+                </div>            
+            </div>
+            <div style="border-style: solid; border-color: gray; width: 300px; height: 150px; margin-top: 5px;" [style.display]="showPosts? 'none' : 'block' ">
+                <div style="margin-top: 25px; ">
+                    Title: <input type="text" #postTitle><br/>
+                    <div style="margin-top: 5px;">Body: <input type="text" #postBody><br/><br/></div>
+                    <input type="button" value="Cancel" (click)="getNewPost()" class="regBut"> <input type="button" value="Add" (click)="addPost(postTitle.value, postBody.value)" class="regBut">
+                </div>
+            </div>
+        </div>
+    </div>
+    
